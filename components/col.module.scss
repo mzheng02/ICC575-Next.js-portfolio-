@@ -1,0 +1,20 @@
+@use '../sass/abstracts/mixins';
+
+$devices:xs,sm,md,lg;
+
+.col{
+    width: 100%;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    @each $devices in $devices{
+        @include mixins.breakpoint($devices){
+            @for $i from 1 through 12 {
+                &.col-#{$devices}-#{$i}{
+                    width: calc(100% * (#{$i}/12));
+                }
+            }
+        }
+    }
+    @include mixins.textAligns();
+    
+}
