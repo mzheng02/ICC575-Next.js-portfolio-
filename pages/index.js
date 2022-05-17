@@ -10,12 +10,23 @@ import Heading from '../components/Heading'
 import Paragraph from '../components/Paragraph'
 import ProjectsByGenre from '../components/ProjectsByGenre'
 import Container from '../components/Container'
+import { getProjects } from '../lib/api'
 
-export default function Home() {
+export async function getStaticProps() {
+    const items = await getProjects();
+
+    return {
+      props: {
+        items
+      }
+    }
+}
+
+export default function Home({items}) {
   return (
     <Layout>
       <Head>
-        <title>Create Next App</title>
+        <title>Min Portfolio</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container>
@@ -72,6 +83,31 @@ export default function Home() {
               </Link>
             </Paragraph>
           </Col>
+        </Row>
+
+        <Heading level="2"> Data Array Projects</Heading>
+        <Row>
+
+        {items.map((item, index) => {
+          const {title, image, slug} = item;
+          return<Col key={index} xs="12" sm="6" md="4">
+            <Image
+                  src={`/images/${image}`}
+                  alt={title}
+                  width={1500}
+                  height={1000}
+                  layout="responsive"
+              />
+            <Heading level="3"> {title}</Heading>
+            <Paragraph>
+              <Link href={`/projects/${slug}`}>
+                <a>
+                  View Project
+                </a>
+              </Link>
+            </Paragraph>
+          </Col>
+        })}
         </Row>
       </Container>
 
