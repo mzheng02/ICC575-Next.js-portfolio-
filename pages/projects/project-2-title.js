@@ -1,8 +1,8 @@
 import Layout from '../../components/Layout'
 import Heading from '../../components/Heading'
-import Paragraph from '../../components/Paragraph';
+import Paragraph from '../../components/Paragraph'
 import Image from 'next/image'
-import Container from '../../components/Container';
+import Container from '../../components/Container'
 
 
 const ProjectTwoPage = () => {
