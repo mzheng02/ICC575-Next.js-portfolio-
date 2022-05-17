@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind'
 import styles from './heading.module.scss'
 
-let cx = classNames.bind(styles);
+let cx = classNames.bind(styles)
 
 export default function Heading({ children, level })
 {
